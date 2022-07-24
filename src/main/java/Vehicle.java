@@ -1,7 +1,13 @@
 public class Vehicle {
 
+    private Integer initialAltitude;
+    private Integer previousAltitude;
+    private Integer currentAltitude;
+
     public Vehicle(int InitialAltitude) {
         // initialize the altitude AND previous altitude to initialAltitude
+        this.initialAltitude = initialAltitude;
+        this.previousAltitude = initialAltitude;
     }
 
     int Gravity = 100;
@@ -54,14 +60,18 @@ public class Vehicle {
 
     public int computeDeltaV() {
         // return velocity + gravity - burn amount
-        return 0;
+        return Velocity + Gravity - Burn;
     }
 
     public void adjustForBurn(int burnAmount) {
         // set burn to burnamount requested
+        Burn = burnAmount;
         // save previousAltitude with current Altitude
+        this.previousAltitude = currentAltitude;
         // set new velocity to result of computeDeltaV function.
+        Velocity = computeDeltaV();
         // subtract speed from Altitude
+
         // subtract burn amount fuel used from tank
     }
 
