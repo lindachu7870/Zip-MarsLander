@@ -35,6 +35,10 @@ public class Vehicle {
 
     }
 
+    public int getFlying() {
+        return Flying;
+    }
+
     public String checkFinalStatus() {
         String s = "";
         if (this.Altitude <= 0) {
@@ -71,9 +75,9 @@ public class Vehicle {
         // set new velocity to result of computeDeltaV function.
         Velocity = computeDeltaV();
         // subtract speed from Altitude
-        Altitude = Altitude - Velocity;
+        Altitude -= Velocity;
         // subtract burn amount fuel used from tank
-        Fuel = Fuel - burnAmount;
+        Fuel -= burnAmount;
     }
 
     public boolean stillFlying() {
@@ -87,7 +91,7 @@ public class Vehicle {
 
     public DescentEvent getStatus(int tick) {
         // create a return a new DescentEvent object
-        return new DescentEvent(tick, Velocity, Altitude, Flying, Fuel);
+        return new DescentEvent(tick, Velocity, Fuel, Altitude, Flying);
         // filled in with the state of the vehicle.
     }
 
